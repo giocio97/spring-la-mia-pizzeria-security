@@ -12,7 +12,7 @@ import com.corsojava.pizzeria.model.Pizza;
 import com.corsojava.pizzeria.repository.PizzaRepository;
 
 @Controller
-@RequestMapping("/pizze")
+@RequestMapping("/")
 public class PizzaController {
 
 	@Autowired
