@@ -20,7 +20,9 @@
        <th scope="col">Prezzo</th>
     </tr>
   </thead>
+  
   <tbody class="table-group-divider">
+  
   	
     <tr th:each ="pizza: ${elencoPizze}">
       <th th:text="${pizza.id}" scope="row"></th>
@@ -29,6 +31,7 @@
       <td th:text="${pizza.foto}"></td>
       <td th:text="${pizza.prezzo}+'€'"></td>
     </tr>
+    <h4 th:if="${elencoPizze.size <1}" class="text-center"></h4>
    
   </tbody>
   
