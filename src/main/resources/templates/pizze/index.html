@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+
+<title>Pizzeria bella Napoli</title>
+</head>
+<body>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">nome</th>
+      <th scope="col">descrizione</th>
+      <th scope="col">Foto</th>
+       <th scope="col">Prezzo</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  	
+    <tr th:each ="pizza: ${elencoPizze}">
+      <th th:text="${pizza.id}" scope="row"></th>
+      <td th:text="${pizza.nome}"></td>
+      <td th:text="${pizza.descrizione}" ></td>
+      <td th:text="${pizza.foto}"></td>
+      <td th:text="${pizza.prezzo}+'€'"></td>
+    </tr>
+   
+  </tbody>
+  
+ 
+</table>
+</body>
+</html>
