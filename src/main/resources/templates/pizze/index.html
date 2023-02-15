@@ -2,13 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+<th:block th:replace="~{fragments :: head}"></th:block>
 
 <title>Pizzeria bella Napoli</title>
 </head>
 <body>
 <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+
+<div class="container">
+    	
+    	<form method="GET" action="" class="row d-flex justify-content-center " style="padding:10px; margin:10px; ">
+ 
+		  <div class="col-auto ">
+		    <input type="text" id="keyword" name="keyword" placeholder="Inserire pizza da ricercare...">
+		  </div>
+		  <div class="col-auto">
+		   <input type="submit" value="Invia">
+		  </div>
+		</form>
+
+
+
 
 <table class="table table-hover align-middle container">
   <thead class="table-dark">
@@ -23,19 +37,32 @@
   
   <tbody class="table-group-divider">
   
-  	
-    <tr th:each ="pizza: ${elencoPizze}">
-      <th th:text="${pizza.id}" scope="row"></th>
-      <td th:text="${pizza.nome}"></td>
+  
+  <tr th:each ="pizza: ${elencoPizze}">
+      <th scope="row"> <a th:text="${pizza.id}" th:href="@{/pizze/{id}(id=${pizza.getId()})}"></a>   </th>
+      <td> <a th:text="${pizza.nome}" th:href="@{/pizze/{id}(id=${pizza.getId()})}"></a> </td>
       <td th:text="${pizza.descrizione}" ></td>
       <td><img th:src="@{${pizza.foto}}" width="100"></td>
       <td th:text="${pizza.prezzo}+'€'"></td>
+      	
+      	
+      	
     </tr>
-    <h4 th:if="${elencoPizze.size <1}" class="text-center"></h4>
+  
+    
+    
    
   </tbody>
   
  
 </table>
+
+<h4 th:if="${elencoPizze.size ()== 0}" class="text-center"> non ci sono pizze al momento</h4>
+
+</div>
+
+
+ 		
+
 </body>
 </html>
