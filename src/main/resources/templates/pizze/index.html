@@ -10,6 +10,9 @@
 <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
 
 <div class="container">
+		<div>
+			<a th:href="@{/create}"> <button type="button" class="btn btn-primary"> Crea Pizza </button></a>
+		</div>
     	
     	<form method="GET" action="" class="row d-flex justify-content-center " style="padding:10px; margin:10px; ">
  
@@ -20,6 +23,8 @@
 		   <input type="submit" value="Invia">
 		  </div>
 		</form>
+		
+		
 
 
 
@@ -40,7 +45,7 @@
   
   <tr th:each ="pizza: ${elencoPizze}">
       <th scope="row"> <a th:text="${pizza.id}" th:href="@{/pizze/{id}(id=${pizza.getId()})}"></a>   </th>
-      <td> <a th:text="${pizza.nome}" th:href="@{/pizze/{id}(id=${pizza.getId()})}"></a> </td>
+      <td> <a th:text="${pizza.nome}" th:href="@{/{id}(id=${pizza.getId()})}"></a> </td>
       <td th:text="${pizza.descrizione}" ></td>
       <td><img th:src="@{${pizza.foto}}" width="100"></td>
       <td th:text="${pizza.prezzo}+'€'"></td>

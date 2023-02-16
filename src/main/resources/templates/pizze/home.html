@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title>home</title>
+</head>
+<body>
+<h1>la mia pizzeria!</h1>
+<a th:href="@{/pizze}"> <button type="button" class="btn btn-primary">Menù</button></a>
+<a th:href="@{/create}"> <button type="button" class="btn btn-primary"> Crea Pizza </button></a>
+
+</body>
+</html>

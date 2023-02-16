@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title>Create page</title>
+</head>
+<body>
+<div class="container">
+
+		<div>
+			<a th:href="@{/pizze}"> <button type="button" class="btn btn-primary">Menù</button></a>
+		</div>
+
+	<form id="pizza-form" th:object="${pizza}" th:action="@{/create}" method="post">
+		
+		
+		
+		<div class="mb-3">
+  			<label for="nome" class="form-label">Nome Pizza</label>
+  			<input type="text" class="form-control" id="nome" th:field="*{nome}" th:errorClass="is-invalid" placeholder="Nome Pizza">
+  			
+  			<div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+  			
+		</div>
+		<div class="mb-3">
+  			<label for="descrizione" class="form-label">Descrizione</label>
+  			<input type="text" class="form-control" id="descrizione" th:field="*{descrizione}" th:errorClass="is-invalid" placeholder="Descrizione">
+  			
+  			<div th:if="${#fields.hasErrors('descrizione')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('descrizione')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+		</div>
+	
+		<div class="mb-3">
+  			<label for="foto" class="form-label">Foto</label>
+  			<input type="text" class="form-control" id="foto" th:field="*{foto}" placeholder="Inserisci URL">
+		</div>
+		<div class="mb-3">
+  			<label for="prezzo" class="form-label">Prezzo</label>
+  			<input type="text" class="form-control" id="prezzo" th:field="*{prezzo}" th:errorClass="is-invalid" placeholder="Inserisci Prezzo">
+  			
+  			<div th:if="${#fields.hasErrors('prezzo')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('prezzo')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+  			
+		</div>
+		
+		<div class="mb-3 row d-flex " >
+  			<button class="btn btn-primary justify-content-center" type="submit">Crea Pizza</button>
+		</div>
+		
+		
+		
+	</form>
+	
+
+</div>
+
+</body>
+</html>
