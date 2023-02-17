@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <th:block th:replace="~{fragments :: head}"></th:block>
 
+
 <title>Pizzeria bella Napoli</title>
 </head>
 <body>
@@ -11,16 +12,16 @@
 
 <div class="container">
 		<div>
-			<a th:href="@{/create}"> <button type="button" class="btn btn-primary"> Crea Pizza </button></a>
+			<a th:href="@{/create}"> <button type="button" class="btn btn-outline-secondary"> <i class="fa-solid fa-plus"></i> Crea Pizza </button></a>
 		</div>
     	
     	<form method="GET" action="" class="row d-flex justify-content-center " style="padding:10px; margin:10px; ">
  
 		  <div class="col-auto ">
-		    <input type="text" id="keyword" name="keyword" placeholder="Inserire pizza da ricercare...">
+		    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Inserire pizza da ricercare..">
 		  </div>
 		  <div class="col-auto">
-		   <input type="submit" value="Invia">
+		   <input class="btn btn-outline-secondary" type="submit" value="Invia">
 		  </div>
 		</form>
 		
@@ -37,6 +38,8 @@
       <th scope="col">descrizione</th>
       <th scope="col">Foto</th>
        <th scope="col">Prezzo</th>
+       <th></th>
+       <th></th>
     </tr>
   </thead>
   
@@ -49,6 +52,17 @@
       <td th:text="${pizza.descrizione}" ></td>
       <td><img th:src="@{${pizza.foto}}" width="100"></td>
       <td th:text="${pizza.prezzo}+'€'"></td>
+      <td>
+				<form action="#" th:action="@{'/delete/{id}'(id=${pizza.id})}" method="post">
+					<button class="btn btn-outline-danger" type="submit" id="submitButton">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				
+				</form>
+				</td>
+				<td>
+				<a class="btn btn-outline-secondary" th:href="@{'/edit/{id}'(id=${pizza.id})}"> <i class="fa-regular fa-pen-to-square"></i> </a>
+				</td>
       	
       	
       	

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.corsojava.pizzeria.model.Pizza;
 import com.corsojava.pizzeria.repository.PizzaRepository;
 
@@ -78,4 +77,35 @@ public class PizzaController {
 		return "redirect:/pizze";
 
 	}
+
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Integer id, Model model) {
+
+		Pizza pizza;
+
+		pizza = pizzaRepository.getReferenceById(id);
+		model.addAttribute("pizza", pizza);
+		return "pizze/edit";
+
+	}
+
+	@PostMapping("/edit/{id}")
+	public String update(@Valid @ModelAttribute("book") Pizza formPizza, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors())
+			return "pizze/create";
+
+		pizzaRepository.save(formPizza);
+		return "redirect:/pizze";
+
+	}
+
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+
+		pizzaRepository.deleteById(id);
+		return "redirect:/pizze";
+
+	}
+
 }
