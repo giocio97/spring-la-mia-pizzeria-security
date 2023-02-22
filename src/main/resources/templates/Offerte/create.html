@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title>Create page Offerte</title>
+</head>
+<body>
+<div class="container">
+
+		<div>
+			<a th:href="@{/pizze}"> <button type="button" class="btn btn-primary">Menù</button></a>
+		</div>
+
+	<form id="offerta-form" th:object="${offerta}" th:action="@{offerte/create}" method="post">
+		
+		
+		
+		<div class="mb-3">
+  			<label for="offerta" class="form-label">Titolo Offerta</label>
+  			<input type="text" class="form-control" id="titolo" th:field="*{titolo}" th:errorClass="is-invalid" placeholder="titolo offerta">
+  			
+  			<div th:if="${#fields.hasErrors('titolo')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('titolo')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+  			
+		</div>
+		<div class="mb-3">
+  			<label for="inizioOff" class="form-label">Data inizio</label>
+  			<input type="date" class="form-control" id="inizioOff" th:field="*{inizioOff}" th:errorClass="is-invalid">
+  			
+  			<div th:if="${#fields.hasErrors('inizioOff')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('inizioOff')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+		</div>
+		
+			<div class="mb-3">
+  			<label for="fineOff" class="form-label">Data fine</label>
+  			<input type="date" class="form-control" id="fineOff" th:field="*{fineOff}" th:errorClass="is-invalid">
+  			
+  			<div th:if="${#fields.hasErrors('fineOff')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('fineOff')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+		</div>
+	
+	
+		
+		
+		
+		<div class="mb-3 row d-flex " >
+  			<button class="btn btn-primary justify-content-center" type="submit">Crea Offerta</button>
+		</div>
+		
+		
+		
+	</form>
+	
+
+</div>
+
+</body>
+</html>

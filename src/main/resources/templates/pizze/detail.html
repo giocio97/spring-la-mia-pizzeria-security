@@ -30,6 +30,8 @@
 		<p th:if="${pizza.offerte.size()==0}">non ci sono offerte</p>
 		
 		<div class="col-12">
+		
+		<a class="btn btn-success my-5" th:href="@{|offerte/create?pizzaId=${pizza.id}|}" >Crea Offerta</a>
 
 	<table th:if="${pizza.offerte.size()>0}" class="table">
 		<thead>

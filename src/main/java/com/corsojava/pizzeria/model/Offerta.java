@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Offerta {
@@ -14,10 +16,14 @@ public class Offerta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@NotNull(message = "Inserire data Inizio offerta - Campo obbligatorio")
 	private LocalDate inizioOff;
 
+	@NotNull(message = "Inserire data Fine offerta - Campo obbligatorio")
 	private LocalDate fineOff;
 
+	@NotNull(message = "Inserire titolo - Campo obbligatorio")
+	@NotEmpty(message = "Inserire titolo - Campo obbligatorio")
 	private String titolo;
 
 	@ManyToOne
