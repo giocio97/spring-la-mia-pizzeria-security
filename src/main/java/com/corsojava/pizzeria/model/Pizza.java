@@ -6,11 +6,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -35,6 +37,9 @@ public class Pizza {
 //	@NotEmpty(message = "Questo è un campo obbligatorio")
 	@DecimalMin(value = "1.00", message = "il prezzo deve essere maggiore di zero")
 	private BigDecimal prezzo;
+
+	@OneToMany(mappedBy = "pizza")
+	private List<Offerta> offerte;
 
 	public String getNome() {
 		return nome;
@@ -74,6 +79,14 @@ public class Pizza {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public List<Offerta> getOfferte() {
+		return offerte;
+	}
+
+	public void setOfferte(List<Offerta> offerte) {
+		this.offerte = offerte;
 	}
 
 }

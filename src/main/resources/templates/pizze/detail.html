@@ -26,6 +26,35 @@
 			
 		</div>
 		
+		<h3>offerte:</h3>
+		<p th:if="${pizza.offerte.size()==0}">non ci sono offerte</p>
+		
+		<div class="col-12">
+
+	<table th:if="${pizza.offerte.size()>0}" class="table">
+		<thead>
+			<tr>
+				<td>Id</td>
+				<td>offerta</td>
+				<td>inizio</td>
+				<td>fine</td>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="offerta : ${pizza.offerte}">
+				<td th:text="${offerta.id}"></td>
+				<td th:text="${offerta.titolo}"></td>
+				<td th:text="${#temporals.format(offerta.inizioOff,'dd/MM/yyyy')}"></td>
+				<td th:text="${#temporals.format(offerta.fineOff,'dd/MM/yyyy')}"></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	</div>
+		
+		
+		
 		
 
 
