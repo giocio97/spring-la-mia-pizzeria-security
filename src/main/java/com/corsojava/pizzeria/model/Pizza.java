@@ -8,6 +8,9 @@ import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,14 +22,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Pizze")
 public class Pizza {
-
-	public List<Ingrediente> getIngredienti() {
-		return ingredienti;
-	}
-
-	public void setIngredienti(List<Ingrediente> ingredienti) {
-		this.ingredienti = ingredienti;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,6 +94,14 @@ public class Pizza {
 
 	public void setOfferte(List<Offerta> offerte) {
 		this.offerte = offerte;
+	}
+
+	public List<Ingrediente> getIngredienti() {
+		return ingredienti;
+	}
+
+	public void setIngredienti(List<Ingrediente> ingredienti) {
+		this.ingredienti = ingredienti;
 	}
 
 }

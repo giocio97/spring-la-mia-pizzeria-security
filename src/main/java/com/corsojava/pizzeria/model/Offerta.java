@@ -2,6 +2,9 @@ package com.corsojava.pizzeria.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,6 +29,7 @@ public class Offerta {
 	@NotEmpty(message = "Inserire titolo - Campo obbligatorio")
 	private String titolo;
 
+	@JsonIgnore
 	@ManyToOne
 	private Pizza pizza;
 

@@ -5,6 +5,9 @@ import java.util.List;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,9 +23,10 @@ public class Ingrediente {
 
 	private String nome;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "ingredienti")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<Pizza> Pizze;
+	private List<Pizza> pizze;
 
 	public Integer getId() {
 		return id;
@@ -41,11 +45,11 @@ public class Ingrediente {
 	}
 
 	public List<Pizza> getPizze() {
-		return Pizze;
+		return pizze;
 	}
 
 	public void setPizze(List<Pizza> pizze) {
-		Pizze = pizze;
+		pizze = pizze;
 	}
 
 }
