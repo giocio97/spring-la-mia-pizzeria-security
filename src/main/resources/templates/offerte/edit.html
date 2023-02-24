@@ -12,7 +12,7 @@
 			<a th:href="@{/pizze}"> <button type="button" class="btn btn-primary">Menù</button></a>
 		</div>
 
-	<form id="offerta-form" th:object="${offerta}" th:action="@{/offerte/create}" method="post">
+	<form id="offerta-form" th:object="${offerta}" th:action="@{/offerte/edit/{id}(id=${offerta.id})}" method="post">
 		
 		
 		<input type="hidden" th:field="${offerta.pizza}">
@@ -57,7 +57,11 @@
 		
 		
 		<div class="mb-3 row d-flex " >
-  			<button class="btn btn-primary justify-content-center" type="submit">Crea Offerta</button>
+  			<button class="btn btn-primary justify-content-center" type="submit">Modifica Offerta</button>
+  			
+  			<div class="col-md-auto">
+			     		<a th:href="@{/pizze}"> <button type="button" class="btn btn-outline-danger">annulla</button></a>
+			    	</div>
 		</div>
 		
 		

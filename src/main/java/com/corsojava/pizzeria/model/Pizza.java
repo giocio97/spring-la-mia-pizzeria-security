@@ -12,12 +12,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Pizze")
 public class Pizza {
+
+	public List<Ingrediente> getIngredienti() {
+		return ingredienti;
+	}
+
+	public void setIngredienti(List<Ingrediente> ingredienti) {
+		this.ingredienti = ingredienti;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +49,9 @@ public class Pizza {
 
 	@OneToMany(mappedBy = "pizza")
 	private List<Offerta> offerte;
+
+	@ManyToMany
+	private List<Ingrediente> ingredienti;
 
 	public String getNome() {
 		return nome;

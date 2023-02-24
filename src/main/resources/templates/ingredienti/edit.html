@@ -53,20 +53,7 @@
   			</div>
   			
   			
-  			
-  			
-  			
 		</div>
-		<div class="mb-3">
-				<h3>Ingredienti</h3>
-				<div class="d-flex justify-content-between">
-				<div th:each="i : ${listaIngredienti}" class="form-check ">
-					<input type="checkbox" class="form-check-input"
-						th:value="${i.id}" th:field="*{ingredienti}"> <label
-						class="form-check-box" th:text="${i.nome}"></label>
-				</div>
-				</div>
-				</div>
 			
 			<div class="container text-center">
 		  		<div class="row justify-content-md-center">
@@ -74,7 +61,7 @@
 				     		<button class="btn btn-outline-success" type="submit"> Modifica Pizza</button>
 					    </div>
 			    	<div class="col-md-auto">
-			     		<a th:href="@{/pizze}" class="btn btn-danger">Annulla</a>
+			     		<a th:href="@{/pizze/{id}(id=${offerta.pizza.getId()})}" class="btn btn-danger">Annulla</a>
 			    	</div>
 		    
 	    		</div>

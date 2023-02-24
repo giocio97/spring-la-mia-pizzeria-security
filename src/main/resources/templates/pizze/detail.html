@@ -14,9 +14,11 @@
 	 		 <img th:src="${pizza.getFoto()}" class="card-img-top" alt="pizza">
 	  		<div class="card-body">
 	    		<h5 th:text="${pizza.getNome()}" class="card-title"></h5>
-	    		<p th:text="${pizza.getDescrizione()}" class="card-text"></p>
+	    		<p th:each="ingrediente : ${pizza.ingredienti}" th:text="${ingrediente.nome}" class="card-text"></p>
+	    		<a class="btn btn-primary" th:href="@{'/pizze/edit/{id}'(id=${pizza.id})}">Aggiungi ingredienti</a>
 	  		</div>
 	  		<ul class="list-group list-group-flush">
+	  		<li th:text="${pizza.getDescrizione()}" class="list-group-item"></li>
 	    	<li th:text="'Prezzo:' +' '+${pizza.getPrezzo()}+ '€'" class="list-group-item"></li>
 	    
 	  		</ul>
@@ -31,7 +33,8 @@
 		
 		<div class="col-12">
 		
-		<a class="btn btn-success my-5" th:href="@{|offerte/create?pizzaId=${pizza.id}|}" >Crea Offerta</a>
+		<a class="btn btn-success my-5" th:href="@{|/offerte/create?pizzaId=${pizza.id}|}" >Crea Offerta</a>
+		
 
 	<table th:if="${pizza.offerte.size()>0}" class="table">
 		<thead>
@@ -40,6 +43,8 @@
 				<td>offerta</td>
 				<td>inizio</td>
 				<td>fine</td>
+				<td></td>
+				<td></td>
 				
 			</tr>
 		</thead>
@@ -49,6 +54,15 @@
 				<td th:text="${offerta.titolo}"></td>
 				<td th:text="${#temporals.format(offerta.inizioOff,'dd/MM/yyyy')}"></td>
 				<td th:text="${#temporals.format(offerta.fineOff,'dd/MM/yyyy')}"></td>
+				<td><a class="btn btn-outline-secondary" th:href="@{/offerte/edit/{id}(id=${offerta.getId()})}"> <i class="fa-regular fa-pen-to-square"></i> </a></td>
+				<td>
+					<form action="#" th:href="@{/offerte/delete/{id}'(id=${offerta.id})}" method="post">
+					<button class="btn btn-outline-danger" type="submit" id="submitButton">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				
+				</form>
+				</td>
 				
 			</tr>
 		</tbody>
