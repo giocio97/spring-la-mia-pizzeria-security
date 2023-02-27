@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Detail</title>
+</head>
+<body>
+
+    		
+		<div class="container d-flex justify-content-center  ">
+		
+            <div id="card_pizza" class="card " style="width: 40rem;">
+
+                <img id="pizza-img" src="" class="card-img-top" alt="pizza">
+                  <div class="card-body">
+                    <h5 id="nome" class="card-title"></h5>
+                    <p  id="ingredienti"  class="card-text"></p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                  <li id="descrizione" class="list-group-item"> </li>
+                <li id="prezzo" class="list-group-item"></li>
+            
+                  </ul>
+                  
+      
+            </div>
+                
+                
+            </div>
+            
+            <!-- <h3>offerte:</h3>
+           
+            
+            <div class="col-12">
+            
+            
+    
+        <table th:if="${pizza.offerte.size()>0}" class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>offerta</td>
+                    <td>inizio</td>
+                    <td>fine</td>
+                    <td></td>
+                    <td></td>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="offerta : ${pizza.offerte}">
+                    <td th:text="${offerta.id}"></td>
+                    <td th:text="${offerta.titolo}"></td>
+                    <td th:text="${#temporals.format(offerta.inizioOff,'dd/MM/yyyy')}"></td>
+                    <td th:text="${#temporals.format(offerta.fineOff,'dd/MM/yyyy')}"></td>
+                    <td><a class="btn btn-outline-secondary" th:href="@{/offerte/edit/{id}(id=${offerta.getId()})}"> <i class="fa-regular fa-pen-to-square"></i> </a></td>
+                    <td>
+                        <form action="#" th:href="@{/offerte/delete/{id}'(id=${offerta.id})}" method="post">
+                        <button class="btn btn-outline-danger" type="submit" id="submitButton">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    
+                    </form>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        </div> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="script/detail.js"></script>
+    
+</body>
+</html>
